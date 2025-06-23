@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>謎解きフォーム</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    input[type="text"] { padding: 0.5rem; font-size: 1rem; }
+    button { padding: 0.5rem 1rem; font-size: 1rem; }
+    #result { margin-top: 1rem; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>謎解きキーワード入力フォーム</h1>
+  <p>答えのキーワードを入力して「送信」ボタンを押してください。</p>
+  <input type="text" id="keyword" placeholder="キーワードを入力" />
+  <button onclick="checkKeyword()">送信</button>
+  <div id="result"></div>
+
+  <script>
+    function checkKeyword() {
+      const input = document.getElementById('keyword').value.trim().toLowerCase();
+      const resultDiv = document.getElementById('result');
+      const correct = "apple-banana-cherry"; // 正解キーワード
+
+      if (input === correct) {
+        resultDiv.textContent = "正解です！おめでとう！🎉";
+        resultDiv.style.color = "green";
+      } else {
+        resultDiv.textContent = "残念、不正解です。もう一度試してください。";
+        resultDiv.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
