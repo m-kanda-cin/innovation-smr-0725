@@ -12,38 +12,70 @@
       padding: 40px;
     }
 
-    #success-image {
-      display: none;
-      margin-top: 30px;
-      max-width: 80%;
+    .video-container {
+      position: relative;
+      display: inline-block;
     }
 
     video {
-      width: 80%;
+      width: 80vw;
       max-width: 800px;
-      margin-top: 30px;
-      border: 4px solid white;
-      border-radius: 8px;
+      border-radius: 12px;
+    }
+
+    #success-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 80vw;
+      max-width: 800px;
+      height: 100%;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    #success-overlay img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80%;
+      animation: popIn 0.6s ease-out forwards;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🎬 最後のムービー</h1>
-  <p>お疲れさまでした。動画を見て、最後のメッセージを受け取ってください。</p>
+  <h1>🎬 最終チャプター</h1>
+  <p>動画が終わると結果が現れます...</p>
 
-  <video id="ending-video" autoplay muted>
-    <source src="video.mp4" type="video/mp4" />
-    ご利用のブラウザは動画再生に対応していません。
-  </video>
+  <div class="video-container">
+    <video id="ending-video" autoplay muted>
+      <source src="video.mp4" type="video/mp4" />
+      お使いのブラウザは動画再生に対応していません。
+    </video>
 
-  <img id="success-image" src="image.jpg" alt="脱出成功！" />
+    <div id="success-overlay">
+      <img src="success.png" alt="脱出成功！" />
+    </div>
+  </div>
 
   <script>
     const video = document.getElementById('ending-video');
-    const image = document.getElementById('success-image');
+    const overlay = document.getElementById('success-overlay');
 
     video.addEventListener('ended', () => {
-      image.style.display = 'block';
+      overlay.style.display = 'block';
     });
   </script>
 </body>
