@@ -5,12 +5,19 @@
   <title>脱出成功！</title>
   <style>
     body {
-      background-color: #121212;
+      background-color: #111;
       color: white;
       font-family: sans-serif;
       text-align: center;
       padding: 40px;
     }
+
+    #success-image {
+      display: none;
+      margin-top: 30px;
+      max-width: 80%;
+    }
+
     video {
       width: 80%;
       max-width: 800px;
@@ -21,14 +28,23 @@
   </style>
 </head>
 <body>
-  <h1>🎉 脱出成功！ 🎉</h1>
-  <p>よくぞここまでたどり着きました。</p>
+  <h1>🎬 最後のムービー</h1>
+  <p>お疲れさまでした。動画を見て、最後のメッセージを受け取ってください。</p>
 
-  <video controls autoplay>
-    <source src="video.mp4" type="video/mp4">
-    お使いのブラウザは動画の再生に対応していません。
+  <video id="ending-video" autoplay muted>
+    <source src="video.mp4" type="video/mp4" />
+    ご利用のブラウザは動画再生に対応していません。
   </video>
 
-  <p>また次の謎で会いましょう。</p>
+  <img id="success-image" src="success.png" alt="脱出成功！" />
+
+  <script>
+    const video = document.getElementById('ending-video');
+    const image = document.getElementById('success-image');
+
+    video.addEventListener('ended', () => {
+      image.style.display = 'block';
+    });
+  </script>
 </body>
 </html>
