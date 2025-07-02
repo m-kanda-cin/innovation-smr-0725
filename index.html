@@ -54,21 +54,23 @@
       }
     }
 
-    #play-button {
-      display: inline-block;
-      padding: 12px 24px;
-      margin-top: 20px;
-      background: #28a745;
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(40, 167, 69, 0.8);
       color: #fff;
-      border-radius: 6px;
+      padding: 16px 32px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 20px;
       text-decoration: none;
       transition: background 0.3s;
     }
 
-    #play-button:hover {
-      background: #218838;
+    .play-button:hover {
+      background: rgba(33, 136, 56, 0.8);
     }
   </style>
 </head>
@@ -82,12 +84,12 @@
       お使いのブラウザは動画再生に対応していません。
     </video>
 
+    <a href="#" id="play-button" class="play-button">▶ 再生（音出ます）</a>
+
     <div id="success-overlay">
       <img src="image.png" alt="脱出成功！" />
     </div>
   </div>
-
-  <a href="#" id="play-button">▶ 再生（音量注意）</a>
 
   <audio id="yay-audio" preload="auto">
     <source src="ドンドンパフパフ.mp3" type="audio/mp3">
@@ -102,14 +104,14 @@
 
     playButton.addEventListener('click', (e) => {
       e.preventDefault();
-      video.volume = 0.1; // 動画の音量を下げる
+      video.volume = 0.2; // 動画の音量
       video.play();
       playButton.style.display = 'none';
     });
 
     video.addEventListener('ended', () => {
       overlay.style.display = 'block';
-      yayAudio.volume = 0.2; // 音声ファイルの音量
+      yayAudio.volume = 0.5; // 効果音の音量
       yayAudio.play();
     });
   </script>
