@@ -102,14 +102,14 @@
 
     playButton.addEventListener('click', (e) => {
       e.preventDefault();
-      video.volume = 0.2; // 動画の音量を下げる
+      video.volume = 0.1; // 動画の音量を下げる
       video.play();
       playButton.style.display = 'none';
     });
 
     video.addEventListener('ended', () => {
       overlay.style.display = 'block';
-      yayAudio.volume = 0.5; // 音声ファイルの音量
+      yayAudio.volume = 0.2; // 音声ファイルの音量
       yayAudio.play();
     });
   </script>
