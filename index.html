@@ -89,20 +89,28 @@
 
   <a href="#" id="play-button">▶ 動画を再生する</a>
 
+  <audio id="yay-audio" preload="auto">
+    <source src="ドンドンパフパフ.mp3" type="audio/mp3">
+    お使いのブラウザは audio 再生に対応していません。
+  </audio>
+
   <script>
     const video = document.getElementById('ending-video');
     const overlay = document.getElementById('success-overlay');
     const playButton = document.getElementById('play-button');
+    const yayAudio = document.getElementById('yay-audio');
 
     playButton.addEventListener('click', (e) => {
       e.preventDefault();
-      video.volume = 0.2; // 音量を20%に設定
+      video.volume = 0.2; // 動画の音量を下げる
       video.play();
-      playButton.style.display = 'none'; // ボタンを隠す
+      playButton.style.display = 'none';
     });
 
     video.addEventListener('ended', () => {
       overlay.style.display = 'block';
+      yayAudio.volume = 0.5; // 音声ファイルの音量
+      yayAudio.play();
     });
   </script>
 </body>
