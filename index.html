@@ -53,6 +53,23 @@
         opacity: 1;
       }
     }
+
+    #play-button {
+      display: inline-block;
+      padding: 12px 24px;
+      margin-top: 20px;
+      background: #28a745;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    #play-button:hover {
+      background: #218838;
+    }
   </style>
 </head>
 <body>
@@ -60,7 +77,7 @@
   <p>ここまでよくたどり着いた！！</p>
 
   <div class="video-container">
-    <video id="ending-video" autoplay muted>
+    <video id="ending-video" controls>
       <source src="video.mp4" type="video/mp4" />
       お使いのブラウザは動画再生に対応していません。
     </video>
@@ -70,9 +87,19 @@
     </div>
   </div>
 
+  <a href="#" id="play-button">▶ 動画を再生する</a>
+
   <script>
     const video = document.getElementById('ending-video');
     const overlay = document.getElementById('success-overlay');
+    const playButton = document.getElementById('play-button');
+
+    playButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      video.volume = 0.2; // 音量を20%に設定
+      video.play();
+      playButton.style.display = 'none'; // ボタンを隠す
+    });
 
     video.addEventListener('ended', () => {
       overlay.style.display = 'block';
