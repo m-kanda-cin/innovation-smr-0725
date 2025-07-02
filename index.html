@@ -139,6 +139,73 @@
     const overlay = document.getElementById('success-overlay');
     const playButton = document.getElementById('play-button');
     const yayAudio = document.getElementById('yay-audio');
+    (() => {
+    const frames = [
+    `
+%c
+      .''.
+     :_\\/_:  
+    : /\\ :  
+ .''. : /  \\\\ : .''.
+:_\\/_:'.:::.':_\\/_:
+: /\\ : ::::: : /\\ :
+ '..'  ':::'  '..'
+
+%c
+`,
+    `
+%c
+      .''.     
+     :_\\/_:  
+    : /\\ :  
+ .''. : /  \\\\ : .''.
+:_\\/_:'.:::.':_\\/_:
+: /\\ : ::::: : /\\ :
+ '..'  ':::'  '..'
+
+%c
+`,
+    `
+%c
+      .''.      
+     :_\\/_:  
+    : /\\ :  
+ .''. : /  \\\\ : .''.
+:_\\/_:'.:::.':_\\/_:
+: /\\ : ::::: : /\\ :
+ '..'  ':::'  '..'
+
+%c
+`,
+  ];
+
+  let i = 0;
+  const colors = [
+    "color: gold; font-weight: bold; font-size: 18px; text-shadow: 0 0 7px #ffd700;",
+    "color: orange; font-weight: bold; font-size: 18px; text-shadow: 0 0 10px #ffa500;",
+  ];
+
+  function showFrame() {
+    console.clear();
+    console.log(frames[i % frames.length], colors[i % colors.length], '');
+    console.log(
+      '%c＼脱出成功！／ 🎉 おめでとうございます！ またコードの裏側で会いましょう！',
+      'color: gold; font-size: 16px; font-weight: bold; text-shadow: 0 0 5px #ffd700;'
+    );
+    i++;
+  }
+
+  showFrame();
+  const intervalId = setInterval(showFrame, 700);
+
+  // 30秒後に止める
+  setTimeout(() => {
+    clearInterval(intervalId);
+    console.clear();
+    console.log('%c脱出成功！🎉 お疲れさまでした！', 'color: gold; font-size: 18px; font-weight: bold;');
+  }, 30000);
+})();
+
 
     playButton.addEventListener('click', (e) => {
       e.preventDefault();
